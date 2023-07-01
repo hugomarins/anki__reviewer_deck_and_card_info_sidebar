@@ -21,12 +21,14 @@ def mini_card_stats(card, p, show_od):
     thresh_col = fmt_as_str__maybe_in_critical_color(p.c_Lapses, -1, t, usespan=True, invert=True)
 
     rows_mini_stats = [
-        ("Ivl", right_column),
+        ("Ivl/Ease", right_column + " / " + p.c_Ease_str),
         # ("sched Ivl",p.card_ivl_str),
         # ("actual Ivl",p.card_ivl_str),
         ("Due day", p.dueday),
         ("cid/card created", clickable_cid + '&nbsp;&nbsp;--&nbsp;&nbsp;' + p.now),
-        ("Ease/Lapses", p.c_Ease_str + " / " + thresh_col),
+        ("Lapses/Reviews", thresh_col + " / " + p.c_Reviews),
+        ("Tot/Average Time", p.c_TotalTime + " / " + p.c_AverageTime),
+        ("Note/Card Type", p.c_NoteType + " / " + p.c_CardType),
     ]
     if show_od:
         if p.overdue_percent != "0":
